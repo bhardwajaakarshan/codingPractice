@@ -1,0 +1,46 @@
+## Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
+
+## Let's start with the first part of the problem (determine if a string has all unique characters). Best data structure for this would be a set.
+
+# Language: JAVA , Input: String, Output: Boolean
+
+ASCII vs. Unicode, maximum x unique chars (upper limit)
+
+import Collections;
+
+public boolean hasUniqueChars(String inputStr) {
+	// ASCII has 256 max characters
+	if (inputStr.length > 256) {
+		return false;
+	}
+
+	// Iterate through each letter and add to set
+	HashSet<char> charSet = new HashSet<char>();
+	for (int i = 0; i < inputStr.length; i++) {
+		if (!charSet.add(inputStr[i])) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+# How would this work with no additional data structures?
+
+public boolean hasUniqueChars(String inputStr) {
+	// ASCII has 256 max characters
+	if (inputStr.length > 256) {
+		return false;
+	}
+
+	// Sort string so that it is in order
+	Arrays.sort(inputStr)
+
+	for (int i = 0; i < inputStr.length()-1; i++){
+		if (int(inputStr[i]) == int(inputStr[i+1])){
+			return false
+		}
+	}
+
+	return true;
+}
