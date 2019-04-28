@@ -1,0 +1,26 @@
+# Chapter 2 Meaningful Names
+
+Use intention revealing names and change names when you find better ones. 
+
+implicity of the code:  the degree to which the context is not explicit in the code itself
+
+Avoid disinformation. We should
+avoid words whose entrenched meanings vary from our intended meaning.
+
+Do not add casual data structures that do not apply, accountList could be misleading if not a list, leave it more generic as accounts. 
+
+Don't write code to only satisfy an interpreter. Use names so that the reader knows what the differences offer.
+
+Use pronounceable names. Use searchable names. 
+Longer names trump shorternames, and searchable names trump any constants in code. 
+
+Good measure is that the length of the name should correspond to the size of its scope
+
+Avoid words like Manager, Processor, Data, or Info in the name of a class. A class name should not be a verb.
+
+Methods should have verb or verb phrase names like postPayment, deletePage, or save.
+Accessors, mutators, and predicates should be named for their value and prefixed with get,
+set, and is according to the javabean standard
+
+Pick one word per concept
+

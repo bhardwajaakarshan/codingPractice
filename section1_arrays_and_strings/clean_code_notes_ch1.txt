@@ -1,0 +1,45 @@
+Notes from Clean Code
+
+Chapter1: Bad Code
+
+And specifying requirements in such detail that a machine can execute them is programming. Such a specification is code.
+
+Leblanc's law: Later equals never
+
+We should not be shy of telling business and marketers what we think about maintaining code. How long it takes to create effective code and the tradeoffs of how bad code rots and can impact at a large scale. 
+
+Programmers should not bend to the will of the managers that do not understand the implications of bad code. 
+
+Being messy for the deadline never works, will pay in the long run. 
+
+Interpretation of clean coding
+"I like my code to be elegant and efficient. The
+logic should be straightforward to make it hard
+for bugs to hide, the dependencies minimal to
+ease maintenance, error handling complete
+according to an articulated strategy, and performance
+close to optimal so as not to tempt
+people to make the code messy with unprincipled
+optimizations. Clean code does one thing
+well."
+
+"As the tests get more specific, the code gets more generic."
+
+Bad code tempts the mess to grow. It should be EFFICIENT and PLEASING to look at. 
+
+One broken window starts the process towards decay. 
+
+Clean code does one thing well. 
+Clean code should allow other people to enhance it. 
+
+"beyond names, however. I also look at whether an object or method is doing more than one
+thing. If it’s an object, it probably needs to be broken into two or more objects. If it’s a
+method, I will always use the Extract Method refactoring on it, resulting in one method
+that says more clearly what it does, and some submethods saying how it is done."
+
+code makes the language look like it was made for the problem!
+
+ Indeed, the ratio of time spent reading vs. writing is well over 10:1.
+We are constantly reading old code as part of the effort to write new code.
+
+ 
