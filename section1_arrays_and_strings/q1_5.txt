@@ -1,0 +1,44 @@
+# There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one-edit away (or zero).
+
+# Input: String, String, Output: Boolean
+# Language: Java
+
+public boolean oneAway(String str1, String str2){
+	boolean answer = false;
+	if (str1.length() == str2.length()){
+		answer = checkSameSize(str1, str2);
+	} else {
+		String small, big;
+		small = str1 ? str1.length() > str2.length() : str2;
+		big = str2 ? small == str1 : str1;
+		answer = checkDiffSize(small, big);
+	}
+}
+
+private boolean checkSameSize(String str1, String str2){
+	int strikes = 1;
+	for (int i = 0; i < str1.length(); i++){
+		if (str1.getCharAt(i) != str2.getCharAt(i)){
+			if (strikes == 0){
+				return false;
+			} else {
+				strikes--;
+			}
+		}
+	}
+	return true;
+}
+
+private boolean oneAway(String small, String big){
+	int strikes = 1;
+	for (int i = 0; i < small.length(); i++){
+		if (small.getCharAt(i) != big.getCharAt(i + 1 - strikes)){
+			if (strikes == 0){
+				return false;
+			} else {
+				strikes--;
+				i--;
+			}
+		}
+	}
+}

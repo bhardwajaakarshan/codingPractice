@@ -1,0 +1,62 @@
+# Given two strings, write a method to deicde if one is a permutation of the other.
+
+# Input: 2 Strings, Output: Boolean
+# Language: Java
+
+Takeaways: 
+// can use the java.util.Arrays.sort(char[]) to get the new String;
+// str1.equals(str2) can accomplish same thing (can't forget!)
+// Characters can always be cleaned up into an integer array with a max size of all diff chars
+// Rather than creating two hashmaps, we can subtract from first one and check if keys are all 0;
+
+public boolean arePermutations (String str1, String str2){
+	// O(1) sanity check
+	if (str1.length() != str2.length()){
+		return false;
+	}
+	// O(n log n) to sort
+	Arrays.sort(str1);
+	Arrays.sort(str2);
+
+	// O(n) to walk through and check
+	for (int i = 0; i < str1.length(); i++){
+		if (str1.getCharAt(i) != str2.getCharAt(i))
+			return false;
+	}
+	return true;
+}
+
+
+
+O(n log n) time and O(1) space (only 1 pointer needed)
+
+public boolean arePermutations (String str1, String str2){
+	// O(1) sanity check
+	if (str1.length() != str2.length()){
+		return false;
+	}
+
+	// O(1) to place each char in hash map O(N) overall
+	Map<Character, Integer> letterCountsStr1 = countLetters(str1);
+	Map<Character, Integer> letterCountsStr2 = countLetters(str2);
+
+	// O(N) to iterate over keys and validate.
+	for (Map.entry<Character, Integer> entry : letterCountsStr1){
+		if (letterCountsStr2[entry.getValue()] == null || letterCountStr2[entry.getValue()] != entry.getValue()]){
+			return false;
+		}
+	}
+	return true;
+}
+
+private HashMap<Character, Integer> countLetters(String str){
+	letterCounts = new HashMap<Character, Integer>();
+	for (int i = 0; i < str.length(); i++){
+		char currLetter = str.getCharAt(i);
+		if (letterCounts[currLetter] == null){
+			letterCounts[currLetter] = 1;
+		} else {
+			letterCounts[currLetter]++;
+		}
+	}
+}

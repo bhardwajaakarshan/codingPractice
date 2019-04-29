@@ -1,0 +1,76 @@
+# What a method to replace all spaces in a string with %20. You may assume that the string has sufficient spae at the end to hold the additional characters, and that you are given the true length of the string.  In Java use char[] to do in place.
+
+# Input char[], output: None (should be in place)
+# Language Java
+
+// pointers (displace after urlifying)
+// Takeaways:
+// Scanning before and working backwards is useful. You can use both the pointers in unison.
+
+//OLD:
+
+public void urlify(char[] str, int count){
+	int pointer = 0;
+	if (count < 3){
+		int nextWhiteSpace = getNextWhiteSpace(pointer, str);
+		while (nextWhiteSpace != -1){
+		int pointer = nextWhiteSpace + 1;
+		pointer = shiftArray(2, str, nextWhiteSpace + 1);
+		str[pointer - 1] = '0';
+		str[pointer - 2] = '2';
+		str[pointer - 3] = '%';
+	}
+	return;
+}
+
+private int getNextWhiteSpace(int pointer, char[] str){
+	for (int i = pointer; i < str.length(); i++){
+		if (str[i] == ' '){
+			return i;
+		}
+	}
+	return -1;
+}
+
+private void shiftArray(int shift, char[] str, int pointer){
+	int pointer_copy = pointer;
+	for (int i = 0; i < shift; i++){
+		do {
+			char temp = str[pointer_copy];
+			str[pointer_copy] = ' ';
+			pointer_copy++;
+		} while (str[pointer_copy] != ' ');
+		pointer++;
+		pointer_copy = pointer;
+	}
+	return pointer;
+}
+
+// NEW:
+
+// O(1) Space (in place)
+// O(N) Time complexity (iterate twice).
+public void urlify(char[] str, int count){
+	int ws = 0;
+	for (int i = 0; i < count; i++){
+		if (str[i] == ' '){
+			ws++;
+		}
+	}
+	int index = count + ws*2;
+	if (index != count){
+		str[index] = '\0';
+	}
+	int trueIndex = count;
+	for (int i = index; i >= 0; i--){
+		if (str[trueIndex] == ' '){
+			str[i] = '0';
+			str[i - 1] = '2';
+			str[i - 2] = '%';
+			i -= 2;
+		} else {
+			str[i] = str[trueIndex];
+		}
+		trueIndex--;
+	}
+}

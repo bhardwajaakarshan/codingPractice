@@ -1,0 +1,38 @@
+# Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words. 
+
+// Input: String, Output: Boolean
+// Language: Java
+
+public boolean isPermPalindrome(String str){
+	// if it is odd than one letter should be odd
+	// else they should all be even. 
+	// Assuming ascii 256;
+	// Assuming pass on whitespaces;
+	boolean[] chars = new boolean[256];
+	// case-insenstive
+	str = str.toLowerCase();
+	boolean flag = str % 2 == 1;
+	// odds means one element should be odd but rest even
+	for (int i = 0; i < str.length(); i++){
+		int j = str.getCharAt(i); (implicit casting)
+		if (j == ' ') continue;
+		if (!chars[j]){
+			// all should be false by default
+			chars[j] = !chars[j];
+		}
+		// Now there should be all false (or if odd than one even.)
+	}
+	for (int i = 0; i < str.length(); i++){
+		if (chars[i]){
+			// odds are allowed one strike
+			// evens dont have a strike so flag is false by default
+			// if more strikes occur than we expect, its not a palindrome
+			if (flag){
+				flag = false;
+			} else {
+				return false;
+			}
+		}
+	}
+	return true;
+}
