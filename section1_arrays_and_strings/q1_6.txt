@@ -1,0 +1,34 @@
+# String compression; implement a method to perform a basic string compression using hte counts of repeated characters. For ex: aabcccccaaa would be a2b1c5a3. If compressed string would not become smaller than original string, return old string.
+
+public String compress(String str){
+	int spaceSaved = 0;
+	int i = 0;
+	StringBuilder answer = new StringBuilder(str.length());
+	while (i < str.length()){
+		currChar = str.getCharAt(i);
+		j = i;
+		while (j < str.length() && str.getCharAt(j) == currChar){
+			j++;
+		}
+		answer.push(currChar);
+		int compression = j - i;
+		i = j;
+		char[] comp = convertToChars(compression);
+		for (int i = 0; i < comp.length(); i++){
+			answer.push(comp[i]);
+		}
+		spaceSaved = compression - comp.length();
+	}
+	return spaceSaved > 0 ? answer.toString() : str;
+}
+
+private char[] convertToChars(int value){
+	int size = Math.log(value, 10) + 1;
+	char[] output = new char[size];
+	int size--;
+	for (int i = 0; i < output.length(); i++){
+		output[i] = (value/10) + 48; // (character offset for digits.)
+		size--;
+		value = value % Math.pow(10, size);
+	}
+}
