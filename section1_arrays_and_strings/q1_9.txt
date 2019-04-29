@@ -1,0 +1,11 @@
+#Assume you have a method isSubstring which check sif one word is a substing of another. given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring. 
+
+#Input String, Output Boolean
+
+public boolean isRotation(String s, String t){
+	if (s == null || t == null || s.length() != t.length() || s.length() == 0 || t.length() == 0){
+		return false;
+	}
+	String doubleRotation = t + t;
+	return isSubstring(doubleRotation);
+}

@@ -1,5 +1,7 @@
 # String compression; implement a method to perform a basic string compression using hte counts of repeated characters. For ex: aabcccccaaa would be a2b1c5a3. If compressed string would not become smaller than original string, return old string.
 
+// Solution right!
+
 public String compress(String str){
 	int spaceSaved = 0;
 	int i = 0;

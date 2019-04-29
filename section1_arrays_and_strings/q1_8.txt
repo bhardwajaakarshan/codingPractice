@@ -1,0 +1,29 @@
+# Write an algorithm such that if an element in an MxN matrix is 0, its entire rwo and column are set to 0. 
+
+public void setZero(int[][] matrix){
+	boolean[] zeroRowCol = new int[Math.max(matrix.length(), matrix[0].length())];
+	for (int i = 0; i < matrix.length(); i++){
+		for(int j = 0; j < matrix[0].length(); j++){
+			if (!zeroRowCol[i] && !zeroRowCol[j]){
+				if (matrix[i][j] == 0){
+					zeroRowCol[i] = true;
+					zeroRowCol[j] = true;
+				}
+			}
+		}
+	}
+	for (int k = 0 ; k < zeroRowCol.length(); k++){
+		if (zeroRowCol[k]){
+			if (matrix.length() - 1 >= k){
+				for (int j = 0; j < matrix[0].length(); j++){
+					matrix[k][j] = 0;
+				}
+			}
+			if (matrix[0].length() - 1 >= k){
+				for (int i = 0; i < matrix.length(); i++){
+					matrix[i][k] = 0;
+				}
+			}
+		}
+	}
+}

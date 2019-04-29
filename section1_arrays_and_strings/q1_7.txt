@@ -1,0 +1,16 @@
+# Given an image represented by an NxN matrix, where ach pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. In place???
+
+# Input int[][], Output int[][] (or void if in place)
+# Language: Java
+
+public void rotate90(Pixel[][] matrix){
+	for (int i = 0; i < matrix.length()/2; i++){
+		for (int j = 0; j < matrix[0].length()/2; j++){
+			Pixel temp = matrix[i][j];
+			matrix[i][j] = matrix [matrix.length() - i][j];
+			matrix[matrix.length() - i - 1][j] = matrix[matrix.length() - i - 1][matrix[0]/length() - j - 1];
+			matrix[matrix.length() - i - 1][matrix[0]/length() - j - 1] = matrix[i][matrix[0]/length() - j - 1];
+			matrix[matrix.length() - i - 1][matrix[0]/length() - j - 1] = temp;
+		}
+	}
+}

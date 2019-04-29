@@ -1,0 +1,33 @@
+# Remove Dups: Write code to remove duplicates from an unsorted linked list
+
+public void removeDup(LinkedList l){
+	Node head = l.head;
+	if (head == null) return;
+	Set<T> values = new HashSet<T>();
+	Node curr = head;
+	values.add(curr.data);
+	while (curr.next != null){
+		if (!values.add(curr.next.data)){
+			curr.next = curr.next.next;
+		}
+	}
+}
+
+// No space (2 pointers)
+
+public void removeDup(LinkedList l){
+	Node p1, p2;
+	p1 = l.head;
+	if (p1 == null) return;
+	p2 = p1;
+	while (p1.next != null){
+		while(p2.next != null){
+			if (p2.next.data == p1.data){
+				p2.next = p2.next.next;
+			} else {
+				p2 = p2.next;
+			}
+		}
+		p1 = p1.next;
+	}
+}

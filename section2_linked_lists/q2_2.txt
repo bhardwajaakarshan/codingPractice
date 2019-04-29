@@ -1,0 +1,21 @@
+# Return Kth to last: Implement an algorithm to find the kth to last element of a singly linked list.
+
+Input: LinkedList, Output: Node (kth element)
+Language: Java
+
+public Node kthElementOf(LinkedList l, int k){
+	Node kthAhead = l.head;
+	Node pointer = l.head;
+	if (kthAhead == null) return null;
+	while (k > 1 && kthAhead.next != null){
+		kthAhead = kthAhead.next;
+		k--;
+	}
+	if (k > 1) return null;
+	// last element
+	while(kthAhead.next != null){
+		kthAhead = kthAhead.next;
+		pointer = pointer.next;
+	}
+	return pointer;
+}

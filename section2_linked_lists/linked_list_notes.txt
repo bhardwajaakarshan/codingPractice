@@ -1,0 +1,48 @@
+// Singly LinkedList
+
+class Node{
+	Node next = null;
+	int data;
+}
+
+class LinkedList {
+	head Node;
+
+	void addToTail(int n){
+		Node end = new Node(n);
+		Node curr = head;
+		while (curr.next != null){
+			curr = curr.next;
+		}
+		curr.next = end;
+	}
+
+}
+
+// Doubly LinkedList
+
+class Node {
+	Node next = null;
+	Node prev = null;
+	int data;
+
+	void addToTail(int n){
+		Node end = new Node(n);
+		prev.next = end;
+		prev = end;
+		prev.next = this;
+	}
+
+	boolean removeFromList(int del){
+		Node curr = this;
+		while (curr.next != this || curr.next.data != del){
+			curr = curr.next;
+		}
+		if (curr.next.data == del){
+			curr.next = curr.next.next;
+			curr.next.prev = this;
+			return true;
+		} 
+		return false;
+	}
+}
