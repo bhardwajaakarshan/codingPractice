@@ -1,6 +1,7 @@
 # Partition: Write code to parittion a linked list around a value x, such that all node less than x come before all nodes greater than or equal to x. If x is contained within the list, the values of x only need to be after the elements less than x. 
 
 public Node partition(LinkedList l, int partition){
+	// Can we make this a doubly linked list and build the head and tail.
 	LinkedListNode leftstart = null;
 	LinkedListNode leftpointer = null;
 	LinkedListNode rightpointer = null;

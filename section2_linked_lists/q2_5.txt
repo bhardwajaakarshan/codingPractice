@@ -1,0 +1,44 @@
+# You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1s digit is at the head of the list. White a function that adds the two numbers and returns the sum as a linked list. 
+
+EX. Input: ( 7-->1-->6) + (5-->9-->2) is 617 + 295 = 912 = 2 --> 1 --> 9
+
+Input (Two linked lists), Output: One linkedlist.
+
+public LinkedList<Node> addLinkedLists(LinkedList<Node> a, LinkedList<Node> b){
+	if (a == null || b == null) return null;
+	if (a.head == null) return b;
+	if (b.head == null) return a;
+	int carry = 0;
+	//Find longer number
+	Node pointer1 = a.head;
+	Node pointer2 = b.head;
+	while (a.next != null && b.next != null){
+		a = a.next;
+		b = b.next;
+	}
+	Node bigger;
+	Node smaller;
+	if (b.next == null){
+		bigger = a.head;
+		smaller = b.head;
+	} else {
+		bigger = b.head;
+		smaller = a.head;
+	}
+	pointer1 = bigger;
+	pointer2 = smaller;
+	while (pointer1.next != null){
+		pointer1.data += carry;
+		carry = 0;
+		if (pointer2.data != null){
+			pointer1.data += pointer2.data;
+			pointer2 = pointer2.next;
+		}
+		pointer1.data %= 10;
+		carry = pointer1.data/10;
+		}
+		pointer1 = pointer1.next;
+	}
+	if (carry == 1) pointer1.next = new Node(1);
+	return bigger;
+}
