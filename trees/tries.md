@@ -6,10 +6,9 @@ https://www.geeksforgeeks.org/advantages-trie-data-structure/
 ```java
 // my implementation from leet code
 class TrieNode{
-    char val;
-    Map<Character, TrieNode> charMap = new HashMap<Character, TrieNode>();
-    public TrieNode(char val){
-        this.val = val;
+    Map<Character, TrieNode> charMap;
+    public TrieNode(){
+        this.charMap = new HashMap<Character, TrieNode>();
     }
 }
 
@@ -17,7 +16,7 @@ class Trie {
     TrieNode head;
     /** Initialize your data structure here. */
     public Trie() {
-        head = new TrieNode('\0');
+        head = new TrieNode();
     }
     
     /** Inserts a word into the trie. */
@@ -50,10 +49,10 @@ class Trie {
     
     private void insertHelper(TrieNode head, String word, int index){
         if (index == word.length()) {
-            head.charMap.put('*', new TrieNode('*'));
+            head.charMap.put('*', new TrieNode());
         } else {
             if (head.charMap.get(word.charAt(index)) == null){
-                head.charMap.put(word.charAt(index), new TrieNode(word.charAt(index)));
+                head.charMap.put(word.charAt(index), new TrieNode());
             }
             insertHelper(head.charMap.get(word.charAt(index)), word, ++index);
         }
