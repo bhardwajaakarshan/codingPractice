@@ -76,3 +76,4 @@ public class HeapSort {
 ## Analysis
 The Heapsort algorithm is in-place, and takes O(N log N) time even in worst case, faster than QuickSort asymptotically. 
 Time Complexity: Time complexity of heapify is O(Logn). Time complexity of createAndBuildHeap() is O(n) and overall time complexity of Heap Sort is O(nLogn).
+Having a representation as a complete binary tree is very useful, since it allows us to collapse and represent a heap as an array where the parent (i) always has its children at indicies `2*i + 1` and `2*i + 2`
