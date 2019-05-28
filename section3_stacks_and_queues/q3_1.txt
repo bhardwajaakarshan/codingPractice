@@ -1,5 +1,3 @@
-know all of the sorts
-all the traversals
-code from scratch for recursive and iterative
 compareto and making classes / comparators
 coming up with test cases
+left to review: graphs, hashing, red black trees, windowing, dynamic programming 
